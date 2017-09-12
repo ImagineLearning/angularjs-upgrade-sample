@@ -8,6 +8,7 @@ const swig = require('gulp-swig');
 
 const buildDir = './.build/';
 const files = {
+	assets: ['src/app/data/data.json'],
 	html: ['src/**/*.html'],
 	index: ['src/index.html'],
 	js: ['src/**/*.module.js', 'src/**/*.js'],
@@ -21,13 +22,15 @@ gulp.task('clean', () => {
 	del.sync([buildDir]);
 });
 
+gulp.task('copy-assets', copyAssets);
+
 gulp.task('copy-js', copyJs);
 
 gulp.task('copy-vendor-js', copyVendorJs);
 
 gulp.task('copy-html', copyHtml);
 
-gulp.task('copy', ['copy-vendor-js', 'copy-js', 'copy-html']);
+gulp.task('copy', ['copy-assets', 'copy-vendor-js', 'copy-js', 'copy-html']);
 
 gulp.task('index', index);
 
@@ -58,6 +61,10 @@ function glob(patterns) {
 		},
 		{ files: [], map: {} }
 	).files;
+}
+
+function copyAssets() {
+	gulp.src(files.assets).pipe(gulp.dest(path.join(buildDir, 'assets')));
 }
 
 function copyHtml() {
