@@ -1,12 +1,11 @@
 <html ng-app="app" ng-controller="AppController as $ctrl">
 <head>
 	<title>ngUpgrade</title>
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css" />
+	{% for style in styles %}<link rel="stylesheet" type="text/css" href="{{ style }}" />
+	{% endfor %}
 </head>
-<body class="grid-container">
-	<div class="grid-x grid-margin-x">
-		<div class="large-12 cell" ng-include="'app/app.html'"></div>
-	</div>
+<body class="container">
+	<div class="row columns" ng-include="'app/app.html'"></div>
 	{% for script in scripts %}<script type="text/javascript" src="{{ script }}"></script>
 	{% endfor %}
 </body>

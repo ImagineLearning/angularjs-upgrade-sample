@@ -3,6 +3,7 @@ const _glob = require('glob');
 const gulp = require('gulp');
 const ignore = require('gulp-ignore');
 const path = require('path');
+const sass = require('gulp-sass');
 const swig = require('gulp-swig');
 
 const buildDir = './.build/';
@@ -10,10 +11,11 @@ const files = {
 	html: ['src/**/*.html'],
 	index: ['src/index.html'],
 	js: ['src/**/*.module.js', 'src/**/*.js'],
+	sass: ['src/styles.scss'],
 	vendor_js: ['node_modules/angular/angular.js']
 };
 
-gulp.task('default', ['clean', 'copy', 'index']);
+gulp.task('default', ['clean', 'copy', 'sass', 'index']);
 
 gulp.task('clean', () => {
 	del.sync([buildDir]);
@@ -29,10 +31,13 @@ gulp.task('copy', ['copy-vendor-js', 'copy-js', 'copy-html']);
 
 gulp.task('index', index);
 
+gulp.task('sass', processSass);
+
 gulp.task('watch', () => {
 	gulp.watch(files.html, onHtmlChange);
 	gulp.watch(files.index, onIndexChange);
 	gulp.watch(files.js, onJsChange);
+	gulp.watch('src/**/*.scss', onSassChange);
 });
 
 function glob(patterns) {
@@ -79,9 +84,10 @@ function copyVendorJs() {
 function index() {
 	const patterns = files.vendor_js.concat(files.js);
 	const scripts = glob(patterns).map(script => script.replace(/^src\//, ''));
+	const styles = glob(files.sass).map(scss => scss.replace(/^src\//, 'assets/').replace(/\.scss$/, '.css'));
 	gulp
 		.src(files.index)
-		.pipe(swig({ data: { scripts } }))
+		.pipe(swig({ data: { scripts, styles } }))
 		.pipe(gulp.dest(buildDir));
 }
 
@@ -107,4 +113,16 @@ function onJsChange(event) {
 	// 	del.sync(event.path);
 	// }
 	copyJs();
+}
+
+function onSassChange(event) {
+	console.log(`onSassChange: ${event.path}`);
+	processSass();
+}
+
+function processSass() {
+	gulp
+		.src(files.sass)
+		.pipe(sass({ includePaths: './node_modules' }).on('error', sass.logError))
+		.pipe(gulp.dest(path.join(buildDir, 'assets')));
 }

@@ -1,12 +1,16 @@
-<div>
-	<h2>ng1 Timer Directive</h2>
-	<div>
+<div class="timer card">
+	<div class="card-divider">
+		<h2>ng1 Timer Directive</h2>
+	</div>
+	<div class="card-section">
 		Elapsed:<br />
 		<span class="stat">{{ ($ctrl.elapsed / 1000) | number:3:',' }}s</stat>
 	</div>
-	<div>
-		<button class="button primary" ng-click="$ctrl.start()">Start</button>
-		<button class="button" ng-click="$ctrl.stop()">Stop</button>
-		<button class="button" ng-click="$ctrl.clear()">Clear</button>
+	<div class="card-section">
+		<div class="button-group">
+			<button class="button" ng-click="$ctrl.start()" ng-if="!$ctrl.running">Start</button>
+			<button class="button" ng-click="$ctrl.stop()" ng-if="$ctrl.running">Stop</button>
+			<button class="button" ng-click="$ctrl.clear()" ng-disabled="$ctrl.running">Clear</button>
+		</div>
 	</div>
 </div>

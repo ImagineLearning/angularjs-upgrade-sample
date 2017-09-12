@@ -11,6 +11,7 @@
 
 		// Model
 		$ctrl.elapsed = 0;
+		$ctrl.running = false;
 
 		// Public functions
 		$ctrl.clear = clear;
@@ -26,11 +27,13 @@
 
 		function start() {
 			startTimestamp = Performance.now();
+			$ctrl.running = true;
 			timer = $interval(onInterval, 70);
 		}
 
 		function stop() {
-			if (timer) {
+			if ($ctrl.running) {
+				$ctrl.running = false;
 				$interval.cancel(timer);
 			}
 		}
