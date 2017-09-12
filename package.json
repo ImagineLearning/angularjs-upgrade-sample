@@ -1,0 +1,42 @@
+{
+  "name": "ng-upgrade",
+  "version": "0.1.0",
+  "description": "Spike on using ngUpgrade with AngularJS and Angular",
+  "main": "main.ts",
+  "scripts": {
+    "start": "live-server --port=5500 ./.build/",
+    "test": "echo \"No tests available\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imaginelearning/ng-upgrade.git"
+  },
+  "author": "Eric Gibby",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/imaginelearning/ng-upgrade/issues"
+  },
+  "homepage": "https://github.com/imaginelearning/ng-upgrade#readme",
+  "dependencies": {
+    "@angular/core": "^4.2.6",
+    "angular": "^1.6.6",
+    "rxjs": "^5.4.3",
+    "zone.js": "^0.8.17"
+  },
+  "devDependencies": {
+    "@types/jasmine": "^2.5.54",
+    "@types/node": "^8.0.28",
+    "del": "^3.0.0",
+    "glob": "^7.1.2",
+    "gulp": "^3.9.1",
+    "gulp-ignore": "^2.0.2",
+    "gulp-swig": "^0.8.0",
+    "jasmine-core": "^2.8.0",
+    "karma": "^1.7.1",
+    "karma-jasmine": "^1.1.0",
+    "live-server": "^1.2.0",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.3.2",
+    "typescript": "^2.3.4"
+  }
+}
