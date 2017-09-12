@@ -3,6 +3,7 @@
 
 	angular.module('app', [
 		'app.data',
+		'app.dataTable',
 		'app.timer'
 	]);
 })();

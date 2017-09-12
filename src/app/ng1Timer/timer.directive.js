@@ -1,10 +1,10 @@
 (function() {
 	'use strict';
 
-	angular.module('app.timer').directive('timer', timer);
+	angular.module('app.timer').directive('ng1Timer', TimerDirective);
 
-	timer.$inject = [];
-	function timer() {
+	TimerDirective.$inject = [];
+	function TimerDirective() {
 		// Usage:
 		//
 		// Creates:

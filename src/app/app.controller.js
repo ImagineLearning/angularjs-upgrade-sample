@@ -7,6 +7,12 @@
 	function AppController($log, Data) {
 		var vm = this;
 		vm.data = undefined;
+		vm.columns = [
+			{name: 'id', display: 'ID'},
+			{name: 'firstName', display: 'First Name'},
+			{name: 'lastName', display: 'Last Name'},
+			{name: 'email', display: 'Email'}
+		]
 
 		activate();
 
