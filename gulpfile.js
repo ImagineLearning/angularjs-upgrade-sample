@@ -5,16 +5,10 @@ const ignore = require('gulp-ignore');
 const path = require('path');
 const sass = require('gulp-sass');
 const swig = require('gulp-swig');
+const Server = require('karma').Server;
 
 const buildDir = './.build/';
-const files = {
-	assets: ['src/app/data/data.json'],
-	html: ['src/**/*.html'],
-	index: ['src/index.html'],
-	js: ['src/**/*.module.js', 'src/**/*.js'],
-	sass: ['src/styles.scss'],
-	vendor_js: ['node_modules/angular/angular.js']
-};
+const files = require('./config').files;
 
 gulp.task('default', ['clean', 'copy', 'sass', 'index']);
 
@@ -35,6 +29,8 @@ gulp.task('copy', ['copy-assets', 'copy-vendor-js', 'copy-js', 'copy-html']);
 gulp.task('index', index);
 
 gulp.task('sass', processSass);
+
+gulp.task('test', test);
 
 gulp.task('watch', () => {
 	gulp.watch(files.html, onHtmlChange);
@@ -132,4 +128,14 @@ function processSass() {
 		.src(files.sass)
 		.pipe(sass({ includePaths: './node_modules' }).on('error', sass.logError))
 		.pipe(gulp.dest(path.join(buildDir, 'assets')));
+}
+
+function test(done) {
+	new Server(
+		{
+			configFile: __dirname + '/karma.conf.js',
+			singleRun: true
+		},
+		done
+	).start();
 }
