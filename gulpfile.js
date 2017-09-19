@@ -1,5 +1,6 @@
+const config = require('./config');
 const del = require('del');
-const _glob = require('glob');
+const glob = require('./utils').glob;
 const gulp = require('gulp');
 const ignore = require('gulp-ignore');
 const path = require('path');
@@ -7,8 +8,8 @@ const sass = require('gulp-sass');
 const swig = require('gulp-swig');
 const Server = require('karma').Server;
 
-const buildDir = './.build/';
-const files = require('./config').files;
+const buildDir = config.buildDir;
+const files = config.files;
 
 gulp.task('default', ['clean', 'copy', 'sass', 'index']);
 
@@ -16,66 +17,48 @@ gulp.task('clean', () => {
 	del.sync([buildDir]);
 });
 
-gulp.task('copy-assets', copyAssets);
+gulp.task('copy:assets', copyAssets);
 
-gulp.task('copy-js', copyJs);
+gulp.task('copy:js', copyJs);
 
-gulp.task('copy-vendor-js', copyVendorJs);
+gulp.task('copy:vendor-js', copyVendorJs);
 
-gulp.task('copy-html', copyHtml);
+gulp.task('copy:html', copyHtml);
 
-gulp.task('copy', ['copy-assets', 'copy-vendor-js', 'copy-js', 'copy-html']);
+gulp.task('copy', ['copy:assets', 'copy:vendor-js', 'copy:js', 'copy:html']);
 
 gulp.task('index', index);
 
 gulp.task('sass', processSass);
 
-gulp.task('test', test);
+gulp.task('test', ['default'], test);
 
-gulp.task('watch', () => {
+gulp.task('test:watch', ['default'], testWatch);
+
+gulp.task('watch', ['clean', 'copy', 'sass', 'index', 'test:watch'], () => {
 	gulp.watch(files.html, onHtmlChange);
 	gulp.watch(files.index, onIndexChange);
 	gulp.watch(files.js, onJsChange);
 	gulp.watch('src/**/*.scss', onSassChange);
 });
 
-function glob(patterns) {
-	return patterns.reduce(
-		(aggregator, pattern) => {
-			let map = Object.assign({}, aggregator.map); // copy object
-			let fileArray = aggregator.files.slice(); // copy array
-			_glob.sync(pattern).forEach(file => {
-				if (!map[file]) {
-					map[file] = file;
-					fileArray.push(file);
-				}
-			});
-			return {
-				files: fileArray,
-				map: map
-			};
-		},
-		{ files: [], map: {} }
-	).files;
-}
-
 function copyAssets() {
-	gulp.src(files.assets).pipe(gulp.dest(path.join(buildDir, 'assets')));
+	return gulp.src(files.assets).pipe(gulp.dest(path.join(buildDir, 'assets')));
 }
 
 function copyHtml() {
-	gulp
+	return gulp
 		.src(files.html)
 		.pipe(ignore.exclude('**/index.html'))
 		.pipe(gulp.dest(buildDir));
 }
 
 function copyJs() {
-	gulp.src(files.js).pipe(gulp.dest(buildDir));
+	return gulp.src(files.js).pipe(gulp.dest(buildDir));
 }
 
 function copyVendorJs() {
-	gulp.src(files.vendor_js).pipe(
+	return gulp.src(files.vendor_js).pipe(
 		gulp.dest(file => {
 			const src = path.resolve('./');
 			const filePath = file.base.replace(src, '');
@@ -88,7 +71,7 @@ function index() {
 	const patterns = files.vendor_js.concat(files.js);
 	const scripts = glob(patterns).map(script => script.replace(/^src\//, ''));
 	const styles = glob(files.sass).map(scss => scss.replace(/^src\//, 'assets/').replace(/\.scss$/, '.css'));
-	gulp
+	return gulp
 		.src(files.index)
 		.pipe(swig({ data: { scripts, styles } }))
 		.pipe(gulp.dest(buildDir));
@@ -116,6 +99,7 @@ function onJsChange(event) {
 	// 	del.sync(event.path);
 	// }
 	copyJs();
+	test();
 }
 
 function onSassChange(event) {
@@ -124,7 +108,7 @@ function onSassChange(event) {
 }
 
 function processSass() {
-	gulp
+	return gulp
 		.src(files.sass)
 		.pipe(sass({ includePaths: './node_modules' }).on('error', sass.logError))
 		.pipe(gulp.dest(path.join(buildDir, 'assets')));
@@ -138,4 +122,8 @@ function test(done) {
 		},
 		done
 	).start();
+}
+
+function testWatch(done) {
+	new Server({ configFile: __dirname + '/karma.conf.js' }, done).start();
 }
