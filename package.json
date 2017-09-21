@@ -5,7 +5,8 @@
   "main": "main.ts",
   "scripts": {
     "start": "live-server --port=5500 ./.build/",
-    "test": "gulp test"
+    "test": "gulp test",
+    "webpack": "webpack"
   },
   "repository": {
     "type": "git",
@@ -18,22 +19,38 @@
   },
   "homepage": "https://github.com/imaginelearning/angularjs-upgrade-sample#readme",
   "dependencies": {
+    "@angular/common": "^4.4.2",
+    "@angular/compiler": "^4.4.2",
+    "@angular/core": "^4.4.2",
+    "@angular/platform-browser": "^4.4.2",
+    "@angular/platform-browser-dynamic": "^4.4.2",
+    "@angular/upgrade": "^4.4.2",
     "angular": "^1.6.6",
-    "foundation-sites": "^6.4.3"
+    "angular-mocks": "^1.6.6",
+    "foundation-sites": "^6.4.3",
+    "rxjs": "^5.4.3",
+    "zone.js": "^0.8.17"
   },
   "devDependencies": {
-    "angular-mocks": "^1.6.6",
+    "@types/angular": "^1.6.32",
+    "@types/jasmine": "^2.6.0",
     "del": "^3.0.0",
     "glob": "^7.1.2",
     "gulp": "^3.9.1",
+    "gulp-data": "^1.2.1",
     "gulp-ignore": "^2.0.2",
     "gulp-sass": "^3.1.0",
     "gulp-swig": "^0.8.0",
+    "gulp-util": "^3.0.8",
     "jasmine-core": "^2.8.0",
     "karma": "^1.7.1",
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^1.1.0",
     "karma-spec-reporter": "0.0.31",
-    "live-server": "^1.2.0"
+    "live-server": "^1.2.0",
+    "through2": "^2.0.3",
+    "ts-loader": "^2.3.7",
+    "typescript": "^2.5.2",
+    "webpack": "^3.6.0"
   }
 }
