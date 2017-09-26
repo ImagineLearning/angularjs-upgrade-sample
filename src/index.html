@@ -1,12 +1,12 @@
-<html ng-app="app" ng-controller="AppController as $ctrl">
+<html>
 <head>
 	<title>ngUpgrade</title>
-	{% for style in styles %}<link rel="stylesheet" type="text/css" href="{{ style }}" />
-	{% endfor %}
+	<!-- {% for style in styles %}<link rel="stylesheet" type="text/css" href="{{ style }}" />
+	{% endfor %} -->
 </head>
-<body class="container">
+<body class="container" ng-controller="AppController as $ctrl">
 	<div class="row columns" ng-include="'app/app.html'"></div>
-	{% for script in scripts %}<script type="text/javascript" src="{{ script }}"></script>
-	{% endfor %}
+	<!-- {% for script in scripts %}<script type="text/javascript" src="{{ script }}"></script>
+	{% endfor %} -->
 </body>
 </html>

@@ -31,9 +31,9 @@ gulp.task('index', index);
 
 gulp.task('sass', processSass);
 
-gulp.task('test', ['default'], test);
+gulp.task('test', test);
 
-gulp.task('test:watch', ['default'], testWatch);
+gulp.task('test:watch', testWatch);
 
 gulp.task('watch', ['clean', 'copy', 'sass', 'index', 'test:watch'], () => {
 	gulp.watch(files.html, onHtmlChange);
