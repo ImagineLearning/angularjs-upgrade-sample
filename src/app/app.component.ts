@@ -12,4 +12,4 @@ export class AppComponent {
   title = 'app';
 }
 
-angular.module('app').component('appRoot', downgradeComponent({ component: AppComponent }));
+angular.module('app').directive('appRoot', downgradeComponent({ component: AppComponent }));

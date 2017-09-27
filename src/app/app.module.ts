@@ -6,19 +6,21 @@ import { UpgradeModule, downgradeComponent } from '@angular/upgrade/static';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppComponent } from './app.component';
+import { Ng1DataTableComponent } from './ng1DataTable/data-table.component';
 import { Ng4DataTableComponent } from './ng4-data-table/ng4-data-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    Ng4DataTableComponent,
+    Ng1DataTableComponent,
+    Ng4DataTableComponent
   ],
   imports: [
     BrowserModule,
-    UpgradeModule,
+    UpgradeModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  // bootstrap: [AppComponent],
   entryComponents: [AppComponent] // Needed to add it here to get it to load in AngularJS  
 })
 export class AppModule {
