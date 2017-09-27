@@ -12,10 +12,4 @@ export class AppComponent {
   title = 'app';
 }
 
-let appModule = angular.module('app').component('appRoot', downgradeComponent({ component: AppComponent }));
-console.log('appModule: ');
-console.log(appModule);
-
-let dataTableModule = angular.module('app.dataTable');
-console.log('dataTableModule: ');
-console.log(dataTableModule);
+angular.module('app').component('appRoot', downgradeComponent({ component: AppComponent }));

@@ -1,6 +1,5 @@
 (function() {
 	'use strict';
-	console.log("test");
 
 	angular.module('app', [
 		'app.data',
