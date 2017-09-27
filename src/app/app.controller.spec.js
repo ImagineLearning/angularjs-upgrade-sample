@@ -4,7 +4,6 @@
 			$log,
 			$q,
 			$rootScope,
-			appController,
 			controller,
 			Data,
 			tableData = [
