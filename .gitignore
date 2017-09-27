@@ -4,3 +4,4 @@ node_modules/
 # Generate files
 .build/
 coverage/
+**/npm-debug*.log
