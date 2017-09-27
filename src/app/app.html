@@ -15,8 +15,12 @@
 		</div>
 	</div>
 	<hr />
-	<div class="row columns small-up-1 medium-up-3">
-		<ng1-data-table data="$ctrl.displayData" columns="$ctrl.columns"></ng1-data-table>
-		<!-- <ng1-timer></ng1-timer> -->
+	<div class="row">
+		<div class="medium-6 small-12 columns">
+			<ng1-data-table data="$ctrl.displayData" columns="$ctrl.columns"></ng1-data-table>
+		</div>
+		<div class="medium-6 small-12 columns">
+			<ng4-data-table [data]="$ctrl.displayData" [columns]="$ctrl.columns"></ng4-data-table>
+		</div>
 	</div>
 </div>

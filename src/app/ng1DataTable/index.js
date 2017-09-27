@@ -1,3 +1,3 @@
 import './data-table.module';
 import './data-table.directive';
-import './data-table.html';
+import 'ngtemplate-loader?relativeTo=src/!./data-table.html';

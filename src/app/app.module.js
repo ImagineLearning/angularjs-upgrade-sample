@@ -4,6 +4,7 @@
 	angular.module('app', [
 		'app.data',
 		'app.dataTable',
-		'app.timer'
+		'app.timer',
+		'ng4DataTable' // Include downgraded Angular module to make it available in AngularJS
 	]);
 })();

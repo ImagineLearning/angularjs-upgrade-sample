@@ -27,12 +27,8 @@ module.exports = {
 			{ test: /\.ts$/, use: ['awesome-typescript-loader', 'angular2-template-loader'] },
 			{
 				test: /\.html$/,
-				exclude: path.join(__dirname, 'src/index.html'),
-				use: [
-					// { loader: 'raw-loader' },
-					{ loader: `ngtemplate-loader?relativeTo=${__dirname}/src/` },
-					{ loader: 'html-loader' }
-				]
+				exclude: /index\.html$/,
+				use: ['raw-loader']
 			},
 			{
 				test: /\.scss$/,
