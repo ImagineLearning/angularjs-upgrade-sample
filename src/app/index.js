@@ -4,3 +4,4 @@ import './app.html';
 import './data';
 import './ng1DataTable';
 import './ng1Timer';
+import './ReactDataTable';
