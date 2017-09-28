@@ -4,8 +4,9 @@
   "description": "Spike on using other frameworks (Angular, React) within AngularJS",
   "main": "main.ts",
   "scripts": {
-    "start": "live-server --port=5500 ./.build/",
-    "test": "gulp test"
+    "build": "webpack --config webpack.config.js",
+    "start": "webpack-dev-server --config webpack.config.js",
+    "test": "karma start"
   },
   "repository": {
     "type": "git",
@@ -19,21 +20,38 @@
   "homepage": "https://github.com/imaginelearning/angularjs-upgrade-sample#readme",
   "dependencies": {
     "angular": "^1.6.6",
-    "foundation-sites": "^6.4.3"
+    "foundation-sites": "^6.4.3",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
   },
   "devDependencies": {
     "angular-mocks": "^1.6.6",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "clean-webpack-plugin": "^0.1.17",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.28.7",
     "del": "^3.0.0",
+    "exports-loader": "^0.6.4",
     "glob": "^7.1.2",
     "gulp": "^3.9.1",
     "gulp-ignore": "^2.0.2",
     "gulp-sass": "^3.1.0",
     "gulp-swig": "^0.8.0",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^2.30.1",
     "jasmine-core": "^2.8.0",
     "karma": "^1.7.1",
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^1.1.0",
     "karma-spec-reporter": "0.0.31",
-    "live-server": "^1.2.0"
+    "live-server": "^1.2.0",
+    "ngtemplate-loader": "^2.0.1",
+    "react-scripts": "1.0.14",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
   }
 }
