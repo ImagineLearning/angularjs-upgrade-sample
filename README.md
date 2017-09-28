@@ -33,7 +33,6 @@ See https://github.com/creationix/nvm for more information on NVM.
 
 Run the following commands in the terminal/command prompt from the project directory:
 ```
-npm install -g gulp-cli
 npm install
 ```
 
@@ -42,7 +41,7 @@ npm install
 ### Build
 
 ```
-gulp
+npm run build
 ```
 
 ### Start Development Web Server
@@ -54,5 +53,5 @@ npm start
 ### Tests
 
 ```
-gulp test
+npm test
 ```
