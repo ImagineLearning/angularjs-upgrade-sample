@@ -15,7 +15,7 @@ module.exports = {
 		filename: '[name].bundle.[hash:8].js'
 	},
 	resolve: {
-		extensions: ['.js', '.ts', '.html']
+		extensions: ['.js', '.jsx', '.html']
 	},
 	devServer: {
 		contentBase: path.join(__dirname, buildDir),
@@ -25,7 +25,8 @@ module.exports = {
 	module: {
 		loaders: [
 			{
-				test: /\.js$/,
+				test: /\.js[x]?$/,
+				exclude: [/node_modules/],
 				use: [{ loader: 'babel-loader', options: { presets: ['es2015', 'react'] } }]
 			},
 			{
@@ -59,7 +60,7 @@ module.exports = {
 			angular: 'angular'
 		}),
 		new CopyWebpackPlugin([
-			{ from: './public', to: path.resolve(__dirname, buildDir, 'assets'), exclude: [/index\.html/] }
+			{ from: './public', to: path.resolve(__dirname, buildDir, 'assets'), ignore: ['index.html'] }
 		]),
 		new CleanWebpackPlugin([buildDir])
 	]

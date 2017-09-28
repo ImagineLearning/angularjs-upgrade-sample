@@ -1,8 +1,8 @@
 import React from 'react';
 
 export default props => {
-	const columns = props.columns;
-	const data = props.data;
+	const columns = props.columns || [];
+	const data = props.data || [];
 	const headers = columns.map(column => <th key={column.name}>{column.display}</th>);
 	const body = data.map((row, index) => {
 		const rowData = columns.map(column => <td key={column.name}>{row[column.name]}</td>);
