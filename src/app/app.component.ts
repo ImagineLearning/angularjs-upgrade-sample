@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 import { downgradeComponent } from '@angular/upgrade/static';
 
 @Component({
-  selector: 'app-root',
+  selector: 'bob-app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

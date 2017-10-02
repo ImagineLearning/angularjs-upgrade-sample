@@ -1,10 +1,13 @@
 (function() {
 	'use strict';
 
+	console.log("test");
+
 	angular.module('app').controller('AppController', AppController);
 
 	AppController.$inject = ['$log', '$filter', '$scope', 'Data'];
 	function AppController($log, $filter, $scope, Data) {
+		console.log("AppController");
 		var vm = this;
 
 		// Model
@@ -24,12 +27,15 @@
 		////////////////
 
 		function activate() {
+			console.log("activate()");
 			Data.get()
 				.then(function(data) {
+					console.log("got data");
 					vm.data = data;
 					populateDisplayData();
 				})
 				.catch(function(error) {
+					console.log(error);
 					$log.error(error);
 				});
 
@@ -43,6 +49,7 @@
 		}
 
 		function onNumRowsChanged(newValue, oldValue) {
+			console.log("onNumRowsChanged");
 			if (newValue !== oldValue) {
 				populateDisplayData();
 			}
