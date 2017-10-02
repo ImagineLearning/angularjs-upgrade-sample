@@ -9,6 +9,5 @@
 		'ng4DataTable', // Include downgraded Angular module to make it available in AngularJS
 		// 'ng4AppComponent'
 		//'ng4Component'
-		// 'app.ng1Component'
 	]);
 })();

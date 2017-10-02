@@ -19,4 +19,4 @@ export class Ng4DataTableComponent implements OnInit {
   }
 
 }
-angular.module('ng4DataTable', []).directive('ng4DataTable', downgradeComponent({ component: Ng4DataTableComponent }));
+angular.module('ng4DataTable', ['app.ng1Component']).directive('ng4DataTable', downgradeComponent({ component: Ng4DataTableComponent }));

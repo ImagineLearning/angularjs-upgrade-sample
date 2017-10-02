@@ -42,6 +42,9 @@
 					</tbody>
 				</table>
 			</div>
+			<ng1-component></ng1-component>
+			<ng4-component></ng4-component>
+			<app-ng4component></app-ng4component>
 			`
 			// templateUrl: './app/ng1DataTable/data-table.html',
 			// template: require('app/ng1DataTable/data-table.html'),
