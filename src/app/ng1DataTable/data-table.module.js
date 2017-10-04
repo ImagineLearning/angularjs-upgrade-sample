@@ -1,5 +1,3 @@
-(function() {
-	'use strict';
+'use strict';
 
-	angular.module('app.dataTable', ['app.ng1Component']);
-})();
+angular.module('app.dataTable', ['app.ng1Component']);

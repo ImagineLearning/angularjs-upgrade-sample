@@ -25,18 +25,12 @@
         "../node_modules/angular/angular.js",
         "app/app.module.js",
         "app/data/data.module.js",
-        "app/ng1Root/ng1Root.module.js",
-        "app/ng1Component/ng1-component.module.js",
-        "app/ng1DataTable/data-table.module.js",
         "app/ng1Timer/timer.module.js",
         "app/app.controller.js",
         "app/data/data.service.js",
-        "app/ng1Root/ng1Root.directive.js",
-        "app/ng1DataTable/data-table.directive.js",
         "app/ng1Timer/performance.service.js",
         "app/ng1Timer/timer.controller.js",
-        "app/ng1Timer/timer.directive.js",
-        "app/ng1Component/ng1-component.directive.js"
+        "app/ng1Timer/timer.directive.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

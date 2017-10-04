@@ -1,5 +1,3 @@
-(function() {
-	'use strict';
+'use strict';
 
-	angular.module('app.ng1Root', []);
-})();
+angular.module('app.ng1Root', []);
